@@ -18,5 +18,8 @@ print(Links.display())
 print(Links.search1(1))
 print(Links.search2(2))
 
-print(Links.remove(2))
+print(Links.remove1(2))
+print(Links.display())
+
+print(Links.remove2(1))
 print(Links.display())

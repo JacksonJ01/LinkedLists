@@ -65,7 +65,7 @@ class LinkedList:
             current = current.next
         return False
 
-    def remove(self, delete):
+    def remove1(self, delete):
         gone = self.head
         previous = self.head
         if self.search1(delete) is True:
@@ -78,6 +78,18 @@ class LinkedList:
             previous.next = None
             return f'Link deleted! {gone.data} is no longer included'
         return 'No value to remove'
+
+    def remove2(self, delete):
+        gone = self.head
+        previous = self.head
+        if delete == self.head:
+            self.head = self.head.next
+            return f'{gone.data} has been removed'
+        while gone.next is not None:
+            previous = gone
+            gone = gone.next
+        previous.next = None
+        return f'{gone.data} has been removed'
 
     def display(self):
         elements = []
