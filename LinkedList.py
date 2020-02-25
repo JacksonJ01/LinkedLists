@@ -49,6 +49,12 @@ class LinkedList:
         return
 
     def search(self, data=None):
+        check = Data(data)
+        current = self.head
+        if self.head == check:
+            return True
+        while current.next != check:
+            current = current.next
 
         return
 
@@ -65,4 +71,5 @@ class LinkedList:
         while current.next is not None:
             elements.append(current.data)
             current = current.next
+        elements.append(current.data)
         print("The contents in this Linked List are:\n", elements)
