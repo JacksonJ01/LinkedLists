@@ -30,7 +30,7 @@ class LinkedList:
     def rem_front(self):
         gone = self.head
         self.head = self.head.next
-        return gone.data, "was removed from the front of the Linked List."
+        return f"{gone.data} was removed from the front of the Linked List."
 
     def rem_end(self):
         gone = self.head
@@ -48,19 +48,36 @@ class LinkedList:
         self.display()
         return
 
-    def search(self, data=None):
-        check = Data(data)
+    def search1(self, check=None):
+        elements = self.display()
+        for element in elements:
+            if check == element:
+                return True
+        return False
+
+    def search2(self, check):
         current = self.head
-        if self.head == check:
+        if self.head.data == check:
             return True
-        while current.next != check:
+        while current.next is not None:
+            if current.data == check:
+                return True
             current = current.next
+        return False
 
-        return
-
-    def remove(self):
-        self.search()
-        return
+    def remove(self, delete):
+        gone = self.head
+        previous = self.head
+        if self.search1(delete) is True:
+            if delete == self.head:
+                self.head = self.head.next
+                return f'Link deleted! {gone.data} is no longer included'
+            while gone.next is not None:
+                previous = gone
+                gone = gone.next
+            previous.next = None
+            return f'Link deleted! {gone.data} is no longer included'
+        return 'No value to remove'
 
     def display(self):
         elements = []
@@ -72,4 +89,4 @@ class LinkedList:
             elements.append(current.data)
             current = current.next
         elements.append(current.data)
-        print("The contents in this Linked List are:\n", elements)
+        return elements
