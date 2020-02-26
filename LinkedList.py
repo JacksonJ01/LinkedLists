@@ -73,9 +73,11 @@ class LinkedList:
                 self.head = self.head.next
                 return f'Link deleted! {gone.data} is no longer included'
             while gone.next is not None:
+                if gone.data == delete:
+                    previous.next = previous.next.next
+                    return f'Link deleted! {gone.data} is no longer included'
                 previous = gone
                 gone = gone.next
-            previous.next = None
             return f'Link deleted! {gone.data} is no longer included'
         return 'No value to remove'
 
@@ -86,10 +88,13 @@ class LinkedList:
             self.head = self.head.next
             return f'{gone.data} has been removed'
         while gone.next is not None:
+            if gone.data == delete:
+                previous.next = previous.next.next
+                return f'{gone.data} has been removed'
             previous = gone
             gone = gone.next
-        previous.next = None
-        return f'{gone.data} has been removed'
+        else:
+            return 'No data to remove'
 
     def display(self):
         elements = []
@@ -102,3 +107,6 @@ class LinkedList:
             current = current.next
         elements.append(current.data)
         return elements
+
+    def dis_elm(self):
+        return f'\nThe items in this Linked List are:\n{self.display()}'
