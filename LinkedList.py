@@ -75,12 +75,13 @@ class LinkedList:
     # Because previous.next points to the data that points to the rest of the list and i got rid of that piece.
     # These 2 methods only delete things if it isn't the 1st or last node
     def remove1(self, delete):
+        if delete == self.head.data:
+            self.head = self.head.next
+            return
         gone = self.head
         previous = self.head
         if self.search1(delete) is True:
-            while gone.next is not None:
-                if delete == self.head:
-                    self.head = self.head.next
+            while gone.next is not None or gone.data == delete:
                 if gone.data == delete:
                     previous.next = previous.next.next
                     return f'Link deleted! {gone.data} is no longer included'
@@ -89,12 +90,14 @@ class LinkedList:
             return f'Link deleted! {gone.data} is no longer included'
         return 'No value to remove'
 
+# adding .data to the end of the if delete == self.head made it work, along with adding the or done.data == delete for these 2 remove methods
     def remove2(self, delete):
+        if delete == self.head.data:
+            self.head = self.head.next
+            return
         gone = self.head
         previous = self.head
-        while gone.next is not None:
-            if delete == self.head:
-                self.head = self.head.next
+        while gone.next is not None or gone.data == delete:
             if gone.data == delete:
                 previous.next = previous.next.next
                 return f'{gone.data} has been removed'
@@ -104,8 +107,14 @@ class LinkedList:
             return 'No data to remove'
 
     def remove3(self, delete):
-        element = self.display()
-
+        elements = self.display()
+        current = self.head
+        delete_this = 0
+        for element in elements:
+            if delete == element:
+                delete_this += 1
+        while current.next != delete_this:
+            print()
         return
 
     def display(self):
