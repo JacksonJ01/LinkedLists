@@ -13,17 +13,17 @@ print('Now we\'re going to append 4 to the end')
 Links.add_end(4)
 print(Links.dis_elm())
 
-print('I don\'t want this List to start with ')
+print('I don\'t want this List to start with 0, so I\'ll remove it')
 print(Links.rem_front())
 print(Links.dis_elm())
 
-print(Links.search1(1))
-print(Links.search2(2))
+print(Links.search1(2))
+print(Links.search2(3))
 
 print('Let\'s remove 2:',
       f'\n{Links.remove1(2)}')
-print(Links.display())
+print(Links.dis_elm())
 
 print('Now let\'s remove 3:',
       f'\n{Links.remove2(3)}')
-print(Links.display())
+print(Links.dis_elm())

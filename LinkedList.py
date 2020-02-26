@@ -1,3 +1,9 @@
+# Jackson Jared
+# 02/26/20
+# This file will contain the 2 classes that will allow the creation and alteration of LinkedLists
+
+
+# This creates the Data class which will allow the insertion of data along with its node, or pointer to the next Link
 class Data:
 
     def __init__(self, data=None):
@@ -5,8 +11,10 @@ class Data:
         self.next = None
 
 
+# This is the LinkedLink class which
 class LinkedList:
 
+    # Creates the head node, which points to the list
     def __init__(self):
         self.head = None
 
@@ -48,7 +56,7 @@ class LinkedList:
         self.display()
         return
 
-    def search1(self, check=None):
+    def search1(self, check):
         elements = self.display()
         for element in elements:
             if check == element:
@@ -65,14 +73,17 @@ class LinkedList:
             current = current.next
         return False
 
+    # For these methods, remove1 and remove2, I had the problem where i set the previous.next to None and that got rid of the list.
+    # It took me a while to realize i needed to set it equal to previous.next.next
+    # Because previous.next points to the data that points to the rest of the list and i got rid of that piece.
+    # For remove1 i used the search method to see if
     def remove1(self, delete):
         gone = self.head
         previous = self.head
         if self.search1(delete) is True:
-            if delete == self.head:
-                self.head = self.head.next
-                return f'Link deleted! {gone.data} is no longer included'
             while gone.next is not None:
+                if delete == self.head:
+                    self.head = self.head.next
                 if gone.data == delete:
                     previous.next = previous.next.next
                     return f'Link deleted! {gone.data} is no longer included'
@@ -84,10 +95,9 @@ class LinkedList:
     def remove2(self, delete):
         gone = self.head
         previous = self.head
-        if delete == self.head:
-            self.head = self.head.next
-            return f'{gone.data} has been removed'
         while gone.next is not None:
+            if delete == self.head:
+                self.head = self.head.next
             if gone.data == delete:
                 previous.next = previous.next.next
                 return f'{gone.data} has been removed'
