@@ -9,21 +9,40 @@ Links.add_head(0)
 Links.add_end(3)
 print(Links.dis_elm())
 
-print('Now we\'re going to append 4 to the end')
+print('\nNow we\'re going to append 4 to the end')
 Links.add_end(4)
-print(Links.dis_elm())
+print(Links.display())
 
-print('I don\'t want this List to start with 0, so I\'ll remove it')
+print('\nI don\'t want this List to start with 0, so I\'ll remove it')
 print(Links.rem_front())
-print(Links.dis_elm())
+print(Links.display())
 
-print(Links.search1(2))
-print(Links.search2(3))
+print("\nLet's search the LinkedList if we have a 2 in the list and return a boolean value:"
+      f"\n{Links.search1(4)}")
+print("Now let's search the LinkedList if we have a 3 in the list and return a boolean value:"
+      f"\n{Links.search2(3)}")
 
-print('Let\'s remove 2:',
+print("\nAlright, lettuce remove them")
+print('Let\'s remove 2 first:',
       f'\n{Links.remove1(2)}')
+print(Links.display())
+
+print('\nNow let\'s remove 3:',
+      f'\n{Links.remove2(3)}')
+print(Links.display())
+
+print("\nThe remove code doesn't work the way it should,"
+      " so I'm going to delete all the nodes and start over, with more Links:")
+Links.clear_all()
+
+add = 0
+while add < 11:
+    Links.add_end(add)
+    add += 1
+
 print(Links.dis_elm())
 
-print('Now let\'s remove 3:',
-      f'\n{Links.remove2(3)}')
-print(Links.dis_elm())
+print("Let's try this again"
+      "\nI'm gonna delete 5")
+Links.remove3(5)
+print(Links.display())

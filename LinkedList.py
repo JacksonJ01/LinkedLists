@@ -51,11 +51,6 @@ class LinkedList:
         previous.next = None
         return gone.data, "was removed from the Linked List."
 
-    def clear_all(self):
-        self.head = None
-        self.display()
-        return
-
     def search1(self, check):
         elements = self.display()
         for element in elements:
@@ -71,12 +66,14 @@ class LinkedList:
             if current.data == check:
                 return True
             current = current.next
+        if current.data == check:
+            return True
         return False
 
     # For these methods, remove1 and remove2, I had the problem where i set the previous.next to None and that got rid of the list.
     # It took me a while to realize i needed to set it equal to previous.next.next
     # Because previous.next points to the data that points to the rest of the list and i got rid of that piece.
-    # For remove1 i used the search method to see if
+    # These 2 methods only delete things if it isn't the 1st or last node
     def remove1(self, delete):
         gone = self.head
         previous = self.head
@@ -106,6 +103,11 @@ class LinkedList:
         else:
             return 'No data to remove'
 
+    def remove3(self, delete):
+        element = self.display()
+
+        return
+
     def display(self):
         elements = []
         if self.head is None:
@@ -120,3 +122,8 @@ class LinkedList:
 
     def dis_elm(self):
         return f'\nThe items in this Linked List are:\n{self.display()}'
+
+    def clear_all(self):
+        self.head = None
+        self.dis_elm()
+        return
