@@ -1,4 +1,6 @@
 from LinkedList import *
+import time
+time.sleep(2.5)
 
 Links = LinkedList()
 
@@ -91,6 +93,7 @@ print("\nI'm going to take you to the interface now, but before i do that.."
       "\n- REMOVE FORM HEAD, (type rh)"
       "\n- REMOVE FROM END, (type re)"
       "\n- REMOVE A VALUE, (type r)"
+      "\n- SEARCH LIST, (type S)"
       "\n- DISPLAY LIST, (type d)"
       "\n- CLEAR ALL, (type CLEAR ALL)"
       "\n- EXIT, (type EXIT)")

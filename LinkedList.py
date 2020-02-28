@@ -1,6 +1,7 @@
 # Jackson Jared
 # 02/26/20
 # This file will contain the 2 classes that will allow the creation and alteration of LinkedLists
+import random
 
 
 # This creates the Data class which will allow the insertion of data along with its node, or pointer to the next Link
@@ -89,7 +90,7 @@ class LinkedList:
             return f'Link deleted! {gone.data} is no longer included'
         return 'No value to remove'
 
-# adding .data to the end of the if delete == self.head made it work, along with adding the or done.data == delete for these 2 remove methods
+    # adding .data to the end of the if delete == self.head made it work, along with adding the or done.data == delete for these 2 remove methods
     def remove2(self, delete):
         if delete == self.head.data:
             self.head = self.head.next
@@ -125,12 +126,18 @@ class LinkedList:
         self.dis_elm()
         return "All values have been removed"
 
+    #
+    #
+    #
+    #
+
     def interface(self):
-        do = input("\n- PREPEND"
+        do = input("\n\n\n- PREPEND"
                    "\n- APPEND"
                    "\n- REMOVE FORM HEAD"
                    "\n- REMOVE FROM END"
                    "\n- REMOVE A VALUE"
+                   "\n- SEARCH LIST"
                    "\n- DISPLAY LIST"
                    "\n- CLEAR ALL"
                    "\n- EXIT"
@@ -142,30 +149,40 @@ class LinkedList:
             self.add_head(add)
             self.interface()
             return
+
         elif do == 'App':
             add = input("What value would you like to add to the list?"
                         "\n>>>")
             self.add_end(add)
             self.interface()
             return
+
         elif do == 'Rh':
             self.rem_front()
             self.interface()
             return
+
         elif do == 'Re':
             self.rem_end()
             self.interface()
             return
+
         elif do == 'R':
+            random.
             remove = input("What value would you like to remove from the list?"
                            "\n>>>")
             self.remove1(remove)
             self.interface()
             return
+
+        elif do == 'S':
+            return
+
         elif do == 'D':
             print(self.display())
             self.interface()
             return
+
         elif do == 'Clear All':
             sure = input("Are you sure you wish to clear all data in the list?"
                          "\n>>>").title()
@@ -175,10 +192,64 @@ class LinkedList:
                 self.clear_all()
             self.interface()
             return
+
         elif do == 'Exit':
+            print("Bye")
+            quit()
             return
+
         else:
             while do != 'Pre' or do != 'App' or do != 'Rh' or do != 'Re' or do != 'R' or do != 'D' or do != 'Clear All' or do != 'Exit':
-                again = input().title()
-                if again == 'Pre':
+                do = input("Sorry, I didn't catch that.."
+                           "\nRepeat that for me").title()
+
+                if do == 'Pre':
+                    add = input("What value would you like to add to the list?"
+                                "\n>>>")
+                    self.add_head(add)
+                    self.interface()
+                    return
+
+                elif do == 'App':
+                    add = input("What value would you like to add to the list?"
+                                "\n>>>")
+                    self.add_end(add)
+                    self.interface()
+                    return
+
+                elif do == 'Rh':
+                    self.rem_front()
+                    self.interface()
+                    return
+
+                elif do == 'Re':
+                    self.rem_end()
+                    self.interface()
+                    return
+
+                elif do == 'R':
+                    remove = input("What value would you like to remove from the list?"
+                                   "\n>>>")
+                    self.remove1(remove)
+                    self.interface()
+                    return
+
+                elif do == 'D':
+                    print(self.display())
+                    self.interface()
+                    return
+
+                elif do == 'Clear All':
+                    sure = input("Are you sure you wish to clear all data in the list?"
+                                 "\n>>>").title()
+                    if sure == "No":
+                        print("You're lucky I asked you")
+                    else:
+                        self.clear_all()
+                    self.interface()
+                    return
+
+                elif do == 'Exit':
+                    print("Bye")
+                    quit()
                     return
