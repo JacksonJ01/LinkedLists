@@ -73,7 +73,6 @@ class LinkedList:
     # For these methods, remove1 and remove2, I had the problem where i set the previous.next to None and that got rid of the list.
     # It took me a while to realize i needed to set it equal to previous.next.next
     # Because previous.next points to the data that points to the rest of the list and i got rid of that piece.
-    # These 2 methods only delete things if it isn't the 1st or last node
     def remove1(self, delete):
         if delete == self.head.data:
             self.head = self.head.next
@@ -106,17 +105,6 @@ class LinkedList:
         else:
             return 'No data to remove'
 
-    def remove3(self, delete):
-        elements = self.display()
-        current = self.head
-        delete_this = 0
-        for element in elements:
-            if delete == element:
-                delete_this += 1
-        while current.next != delete_this:
-            print()
-        return
-
     def display(self):
         elements = []
         if self.head is None:
@@ -135,4 +123,62 @@ class LinkedList:
     def clear_all(self):
         self.head = None
         self.dis_elm()
-        return
+        return "All values have been removed"
+
+    def interface(self):
+        do = input("\n- PREPEND"
+                   "\n- APPEND"
+                   "\n- REMOVE FORM HEAD"
+                   "\n- REMOVE FROM END"
+                   "\n- REMOVE A VALUE"
+                   "\n- DISPLAY LIST"
+                   "\n- CLEAR ALL"
+                   "\n- EXIT"
+                   "\n\n>>>").title()
+
+        if do == 'Pre':
+            add = input("What value would you like to add to the list?"
+                        "\n>>>")
+            self.add_head(add)
+            self.interface()
+            return
+        elif do == 'App':
+            add = input("What value would you like to add to the list?"
+                        "\n>>>")
+            self.add_end(add)
+            self.interface()
+            return
+        elif do == 'Rh':
+            self.rem_front()
+            self.interface()
+            return
+        elif do == 'Re':
+            self.rem_end()
+            self.interface()
+            return
+        elif do == 'R':
+            remove = input("What value would you like to remove from the list?"
+                           "\n>>>")
+            self.remove1(remove)
+            self.interface()
+            return
+        elif do == 'D':
+            print(self.display())
+            self.interface()
+            return
+        elif do == 'Clear All':
+            sure = input("Are you sure you wish to clear all data in the list?"
+                         "\n>>>").title()
+            if sure == "No":
+                print("You're lucky I asked you")
+            else:
+                self.clear_all()
+            self.interface()
+            return
+        elif do == 'Exit':
+            return
+        else:
+            while do != 'Pre' or do != 'App' or do != 'Rh' or do != 'Re' or do != 'R' or do != 'D' or do != 'Clear All' or do != 'Exit':
+                again = input().title()
+                if again == 'Pre':
+                    return

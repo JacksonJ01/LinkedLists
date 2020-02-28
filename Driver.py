@@ -17,7 +17,7 @@ print('\nI don\'t want this List to start with 0, so I\'ll remove it')
 print(Links.rem_front())
 print(Links.display())
 
-print("\nLet's search the LinkedList if we have a 2 in the list and return a boolean value:"
+print("\nLet's search the LinkedList if we have a 4 in the list and return a boolean value:"
       f"\n{Links.search1(4)}")
 print("Now let's search the LinkedList if we have a 3 in the list and return a boolean value:"
       f"\n{Links.search2(3)}")
@@ -61,18 +61,41 @@ while add < 11:
 print(Links.dis_elm())
 
 print("\nAlright, lettuce remove them")
-print('Let\'s remove 2 first:',
-      f'\n{Links.remove1(2)}')
+print('Let\'s remove 10 first:',
+      f'\n{Links.remove1(10)}')
 print(Links.display())
 
 print('\nNow let\'s remove 3:',
-      f'\n{Links.remove2(3)}')
+      f'\n{Links.remove2(0)}')
 print(Links.display())
 
-print('Okay, let\'s remove 4:',
-      f'\n{Links.remove1(4)}')
+print('\nOkay, let\'s remove 4:',
+      f'\n{Links.remove1(9)}')
 print(Links.display())
 
-print('Okay, let\'s remove 1:',
+print('\nOkay, let\'s remove 1:',
       f'\n{Links.remove1(1)}')
 print(Links.display())
+
+Links.clear_all()
+
+print("\nHello world")
+print(Links.display())
+
+print("Seems like everything is working a-okay"
+      "\nNow it's your turn, no more watching me")
+print("\nI'm going to take you to the interface now, but before i do that.."
+      "\n This is what the interface will look like:"
+      "\n- PREPEND,(type pre)"
+      "\n- APPEND, (type app)"
+      "\n- REMOVE FORM HEAD, (type rh)"
+      "\n- REMOVE FROM END, (type re)"
+      "\n- REMOVE A VALUE, (type r)"
+      "\n- DISPLAY LIST, (type d)"
+      "\n- CLEAR ALL, (type CLEAR ALL)"
+      "\n- EXIT, (type EXIT)")
+
+input("Got it?"
+      "\n\n\n\nPRESS ENTER")
+
+Links.interface()

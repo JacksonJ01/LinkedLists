@@ -1,72 +1,78 @@
 # Jackson Jared
 # 2/20/20
 # Creating a class to create singly linked lists
+from LinkedList import *
 
 
-# We need a nodes class to hold the data we want to enter and have a pointer to another node
-class Node:
-
-    def __init__(self, data=None):
-        self.data = data
-        self.next = None
-
-    def rep(self):
-        return repr(self.data)
+# I am making these to test if i remember the basic methods
+def head_add(self, data):
+    new = Data(data)
+    new.next = self.head
+    self.head = new
 
 
-# This class is how we utilize the data we put in the Node class
-class LinkedList:
-    def __init__(self):
-        self.head = Node()
+def head_remove(self):
+    remove = self.head
+    self.head = self.head.next
+    return remove.data
 
-# This method prepends, adding to the beginning of the head of the program
-    def prepend(self, data):
-        new_node = Node(data)
-        new_node.next = self.head
-        self.head = new_node
 
-# This method appends, meaning it adds to the end
-    def append(self, data):
-        new_node = Node(data)
-        current = self.head
-        if self.head is None:
-            self.head = new_node
-        while current.next is not None:
-            current = current.next
-        current.next = new_node
+def tail_add(self, data):
+    new = Data(data)
+    if self.head is None:
+        self.head = new
+        return
+    current = self.head
+    while current.next is not None:
+        current.next = None
+    current.next = new
+    return
 
-    def erase_all(self):
-        self.head = None
 
-# This displays the contents of the list
-    def display(self):
-        elements = []
-        current_node = self.head
-        while current_node.next is not None:
-            current_node = current_node.next
-            elements.append(current_node.data)
-        print(elements)
+def tail_remove(self):
+    if self.head is None:
+        return
+    gone = self.head
+    previous = self.head
+    while gone.next is not None:
+        previous = gone
+        gone = gone.next
+    previous.next = None
+    return gone.data
 
-# This displays the length of the LinkedList
-    def length(self):
-        current = self.head
-        total = 0
-        while current.next is not None:
-            total += 1
-            current = current.next
-        return total
 
-# This method erases a node from the list
-    def erase(self, index):
-        if index >= self.length():
-            print("Error 'Erase' Index out of range!")
-            return
-        current_index = 0
-        current_node = self.head
-        while True:
-            last_node = current_node
-            current_node = current_node.next
-            if current_index == index:
-                last_node.next = current_node.next
-                return
-            current_index += 1
+def look(self, looking):
+    if self.head.data == looking:
+        return True
+    search = self.head
+    while search.next is not None:
+        if search.data == looking:
+            return True
+        search = search.next
+    if search.data == looking:
+        return True
+    return False
+
+
+def looking(self, look):
+    elements = self.display()
+    for element in elements:
+        if element == look:
+            return True
+    return False
+
+
+def remove_anywhere(self, remove):
+    if self.head.data == remove:
+        self.head = self.head.next
+        return remove
+    gone = self.head
+    previous = self.head
+    while gone.next is not None or gone.data == remove:
+        if gone.data == remove:
+            previous.next = previous.next.next
+            return gone.data
+        previous = gone
+        gone = gone.next
+    else:
+        return gone.data
