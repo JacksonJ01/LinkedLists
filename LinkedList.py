@@ -1,8 +1,7 @@
 # Jackson Jared
 # 02/26/20
 # This file will contain the 2 classes that will allow the creation and alteration of LinkedLists
-import random
-
+from random import *
 
 # This creates the Data class which will allow the insertion of data along with its node, or pointer to the next Link
 class Data:
@@ -132,6 +131,7 @@ class LinkedList:
     #
 
     def interface(self):
+        rand = randint(1, 20)
         do = input("\n\n\n- PREPEND"
                    "\n- APPEND"
                    "\n- REMOVE FORM HEAD"
@@ -168,18 +168,29 @@ class LinkedList:
             return
 
         elif do == 'R':
-            random.
             remove = input("What value would you like to remove from the list?"
                            "\n>>>")
-            self.remove1(remove)
+            if rand <= 10:
+                self.remove1(remove)
+            elif rand >= 11:
+                self.remove2(remove)
             self.interface()
             return
 
         elif do == 'S':
+            search = input("What value would you like to search from the list?")
+            if rand <= 10:
+                self.search1(search)
+            elif rand >= 11:
+                self.search2(search)
+            self.interface()
             return
 
         elif do == 'D':
-            print(self.display())
+            if rand <= 10:
+                print(self.display())
+            elif rand >= 11:
+                print(self.dis_elm())
             self.interface()
             return
 
@@ -202,7 +213,6 @@ class LinkedList:
             while do != 'Pre' or do != 'App' or do != 'Rh' or do != 'Re' or do != 'R' or do != 'D' or do != 'Clear All' or do != 'Exit':
                 do = input("Sorry, I didn't catch that.."
                            "\nRepeat that for me").title()
-
                 if do == 'Pre':
                     add = input("What value would you like to add to the list?"
                                 "\n>>>")
@@ -230,12 +240,27 @@ class LinkedList:
                 elif do == 'R':
                     remove = input("What value would you like to remove from the list?"
                                    "\n>>>")
-                    self.remove1(remove)
+                    if rand <= 10:
+                        self.remove1(remove)
+                    elif rand >= 11:
+                        self.remove2(remove)
+                    self.interface()
+                    return
+
+                elif do == 'S':
+                    search = input("What value would you like to search from the list?")
+                    if rand <= 10:
+                        self.search1(search)
+                    elif rand >= 11:
+                        self.search2(search)
                     self.interface()
                     return
 
                 elif do == 'D':
-                    print(self.display())
+                    if rand <= 10:
+                        print(self.display())
+                    elif rand >= 11:
+                        print(self.dis_elm())
                     self.interface()
                     return
 
