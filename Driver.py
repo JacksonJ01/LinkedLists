@@ -1,6 +1,6 @@
 from LinkedList import *
-import time
-time.sleep(2.5)
+# import time
+# time.sleep(2.5)
 
 Links = LinkedList()
 

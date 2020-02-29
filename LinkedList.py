@@ -3,6 +3,7 @@
 # This file will contain the 2 classes that will allow the creation and alteration of LinkedLists
 from random import *
 
+
 # This creates the Data class which will allow the insertion of data along with its node, or pointer to the next Link
 class Data:
 
@@ -132,7 +133,7 @@ class LinkedList:
 
     def interface(self):
         rand = randint(1, 20)
-        do = input("\n\n\n- PREPEND"
+        do = input("\n\n- PREPEND"
                    "\n- APPEND"
                    "\n- REMOVE FORM HEAD"
                    "\n- REMOVE FROM END"
@@ -210,7 +211,7 @@ class LinkedList:
             return
 
         else:
-            while do != 'Pre' or do != 'App' or do != 'Rh' or do != 'Re' or do != 'R' or do != 'D' or do != 'Clear All' or do != 'Exit':
+            while do != 'Pre' or do != 'App' or do != 'Rh' or do != 'Re' or do != 'R' or do != 'D' or do != "S" or do != 'Clear All' or do != 'Exit':
                 do = input("Sorry, I didn't catch that.."
                            "\nRepeat that for me").title()
                 if do == 'Pre':
