@@ -22,7 +22,7 @@ class DoubleLinks:
         else:
             new.previous = None
         self.head = new
-        return new.previous and new.next
+        return
 
     def add_end(self, add):
         new = Data(add)
@@ -30,13 +30,11 @@ class DoubleLinks:
             self.head = new
             return
         current = self.head
-        curr = self.head
         while current.next is not None:
-            curr = current
             current = current.next
-        new.previous = curr
         current.next = new
-        return  # new.previous.data # This actually shows the previous value.. i think the whole thing works
+        new.previous = current
+        return new.previous.data
 
     def remove_head(self):
         gone = self.head
@@ -87,6 +85,17 @@ class DoubleLinks:
         elements.append(current.data)
         return elements
 
+    def display_bw(self):
+        elements = []
+        current = self.head
+        while current.next is not None:
+            current = current.next
+        elements.append(current.data)
+        while current.previous is not None:
+            elements.append(current.previous.data)
+            current = current.previous
+        return elements
+
     def search1(self, search):
         if self.head.data == search:
             return True
@@ -122,6 +131,7 @@ class DoubleLinks:
                    "\n- REMOVE END"
                    "\n- REMOVE"
                    "\n- DISPLAY LIST"
+                   "\n- DISPLAY LIST BACKWARDS"
                    "\n- SEARCH LIST"
                    "\n- CLEAR ALL"
                    "\n- EXIT"
@@ -137,7 +147,7 @@ class DoubleLinks:
         elif do == "Add End" or do == "Ae":
             add = input("What value do you wish to add"
                         "\n>>>")
-            self.add_end(add)
+            print(self.add_end(add))
             self.interface()
             return
 
@@ -166,6 +176,11 @@ class DoubleLinks:
             self.interface()
             return
 
+        elif do == 'Display List Backwards' or do == 'Dlb':
+            print(self.display_bw())
+            self.interface()
+            return
+
         elif do == "Search List" or do == "Sl":
             search = input("What value do you wish to search for"
                            "\n>>>")
@@ -188,7 +203,7 @@ class DoubleLinks:
         else:
             while do != 'Add Head' or do != "Ah" or do != 'Add End' or do != 'Ae' \
                     or do != 'Remove Head' or do != 'Rh' or do != 'Remove End' or do != 'Re' or do != 'Remove' or do != 'R'\
-                    or do != 'Display List' or do != 'Dl' or do != 'Search List' or do != 'Sl'\
+                    or do != 'Display List' or do != 'Dl' or do != 'Display List Backwards' or do != 'Dlb' or do != 'Search List' or do != 'Sl'\
                     or do != 'Clear All' or do != 'Ca' or do != 'Exit' or do != 'E':
                 do = input("Sorry, I didn't catch that..."
                            "\nRepeat that for me"
@@ -230,6 +245,11 @@ class DoubleLinks:
 
                 elif do == "Display List" or do == "Dl":
                     self.display()
+                    self.interface()
+                    return
+
+                elif do == 'Display List Backwards' or do == 'Dlb':
+                    print(self.display_bw())
                     self.interface()
                     return
 
