@@ -66,9 +66,10 @@ class DoubleLinks:
         while gone.next is not None or gone.data == remove:
             if gone.data == remove:
                 previous.next = previous.next.next
+                gone.next = previous
                 if gone.next is None and gone.data == remove:
                     return f'{gone.data} has been removed'
-                previous.previous = previous
+                previous.next = None
             previous = gone
             gone = gone.next
         else:
