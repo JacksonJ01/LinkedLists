@@ -101,4 +101,5 @@ class LinkedListTail:
 
     def clear_all(self):
         self.head = None
+        self.tail = None
         return 'All values removed'

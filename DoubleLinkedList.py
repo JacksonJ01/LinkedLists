@@ -64,12 +64,12 @@ class DoubleLinks:
             self.head.previous = None
             return f'{gone.data} has been removed'
         while gone.next is not None or gone.data == remove:
+            if gone.next is None and gone.data == remove:
+                previous.next = None
+                return f'{gone.data} has been removed'
             if gone.data == remove:
                 previous.next = previous.next.next
                 gone.next = previous
-                if gone.next is None and gone.data == remove:
-                    return f'{gone.data} has been removed'
-                previous.next = None
             previous = gone
             gone = gone.next
         else:
@@ -101,7 +101,7 @@ class DoubleLinks:
         if self.head.data == search:
             return True
         current = self.head
-        while current.next is not None:
+        while current.next is not None or current.data == search:
             if current.data == search:
                 return True
             current = current.next
